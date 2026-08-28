@@ -1,0 +1,401 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <title>Research</title> 
+
+  <style> 
+    :root { 
+      --bg: #f3f1ec; 
+      --surface: #faf9f6; 
+      --dark: #111827; 
+      --navy: #172033; 
+      --text: #252a34; 
+      --muted: #68707f; 
+      --line: #d8d9dc; 
+      --accent: #264e86; 
+      --accent-hover: #19365f; 
+    } 
+
+    * { 
+      box-sizing: border-box; 
+    } 
+
+    html { 
+      scroll-behavior: smooth; 
+    } 
+
+    body { 
+      margin: 0; 
+      font-family: Arial, Helvetica, sans-serif; 
+      color: var(--text); 
+      background: var(--bg); 
+      line-height: 1.65; 
+    } 
+
+    header { 
+      background: var(--navy); 
+      color: white; 
+      position: sticky; 
+      top: 0; 
+      z-index: 100; 
+      box-shadow: 0 1px 8px rgba(0,0,0,0.12); 
+    } 
+
+    nav { 
+      max-width: 1120px; 
+      margin: auto; 
+      padding: 18px 28px; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+    } 
+
+    .site-mark { 
+      font-size: 0.85rem; 
+      letter-spacing: 0.12em; 
+      text-transform: uppercase; 
+      opacity: 0.78; 
+    } 
+
+    .nav-links { 
+      display: flex; 
+      gap: 28px; 
+    } 
+
+    .nav-links a { 
+      color: white; 
+      text-decoration: none; 
+      font-size: 0.92rem; 
+      opacity: 0.82; 
+    } 
+
+    .nav-links a:hover { 
+      opacity: 1; 
+    } 
+
+    .hero { 
+      min-height: 72vh; 
+      display: flex; 
+      align-items: center; 
+      background: 
+        radial-gradient(circle at 80% 20%, rgba(70,90,120,0.11), transparent 34%), 
+        linear-gradient(135deg, #edeae3 0%, #f7f5f1 55%, #e9edf1 100%); 
+    } 
+
+    .hero-inner { 
+      max-width: 1120px; 
+      width: 100%; 
+      margin: auto; 
+      padding: 90px 28px 100px; 
+    } 
+
+    .hero-philosophy { 
+      max-width: 900px; 
+      font-family: Georgia, "Times New Roman", serif; 
+      font-size: clamp(2.4rem, 5vw, 5rem); 
+      line-height: 1.12; 
+      letter-spacing: -0.035em; 
+      color: var(--dark); 
+      margin: 0 0 65px; 
+    } 
+
+    .hero-result { 
+      max-width: 820px; 
+      border-left: 4px solid var(--accent); 
+      padding-left: 28px; 
+    } 
+
+    .hero-result h1 { 
+      margin: 0 0 12px; 
+      font-family: Georgia, "Times New Roman", serif; 
+      font-size: clamp(1.7rem, 3vw, 2.7rem); 
+      line-height: 1.25; 
+      color: var(--dark); 
+    } 
+
+    .hero-result p { 
+      margin: 0; 
+      max-width: 760px; 
+      font-size: 1.12rem; 
+      color: var(--muted); 
+    } 
+
+    .buttons { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 12px; 
+      margin-top: 30px; 
+    } 
+
+    .button { 
+      display: inline-block; 
+      padding: 11px 19px; 
+      border-radius: 7px; 
+      text-decoration: none; 
+      font-weight: 600; 
+      font-size: 0.93rem; 
+      transition: 0.2s ease; 
+    } 
+
+    .button-primary { 
+      color: white; 
+      background: var(--accent); 
+    } 
+
+    .button-primary:hover { 
+      background: var(--accent-hover); 
+    } 
+
+    .button-secondary { 
+      color: var(--dark); 
+      background: rgba(255,255,255,0.55); 
+      border: 1px solid #c8cbd0; 
+    } 
+
+    .button-secondary:hover { 
+      background: white; 
+    } 
+
+    .section { 
+      max-width: 1120px; 
+      margin: auto; 
+      padding: 85px 28px; 
+    } 
+
+    .section-title { 
+      font-family: Georgia, "Times New Roman", serif; 
+      font-size: 2rem; 
+      margin: 0 0 42px; 
+      color: var(--dark); 
+    } 
+
+    .field { 
+      margin-bottom: 58px; 
+    } 
+
+    .field-name { 
+      margin-bottom: 17px; 
+      font-size: 0.78rem; 
+      font-weight: 700; 
+      letter-spacing: 0.15em; 
+      text-transform: uppercase; 
+      color: var(--muted); 
+    } 
+
+    .paper { 
+      background: var(--surface); 
+      border: 1px solid var(--line); 
+      border-radius: 14px; 
+      padding: 30px 32px; 
+      box-shadow: 0 6px 25px rgba(20, 28, 40, 0.045); 
+      margin-bottom: 18px; 
+    } 
+
+    .paper h3 { 
+      font-family: Georgia, "Times New Roman", serif; 
+      font-size: 1.45rem; 
+      line-height: 1.35; 
+      margin: 0 0 9px; 
+      color: var(--dark); 
+    } 
+
+    .paper-meta { 
+      font-size: 0.9rem; 
+      color: var(--muted); 
+      margin-bottom: 16px; 
+    } 
+
+    .paper-description { 
+      max-width: 850px; 
+      margin-bottom: 18px; 
+    } 
+
+    .paper-links { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 18px; 
+    } 
+
+    .paper-links a { 
+      color: var(--accent); 
+      text-decoration: none; 
+      font-weight: 600; 
+      font-size: 0.92rem; 
+    } 
+
+    .paper-links a:hover { 
+      text-decoration: underline; 
+    } 
+
+    footer { 
+      background: var(--navy); 
+      color: rgba(255,255,255,0.67); 
+      padding: 34px 28px; 
+      text-align: center; 
+      font-size: 0.82rem; 
+      letter-spacing: 0.03em; 
+    } 
+
+    @media (max-width: 700px) { 
+      nav { 
+        padding: 16px 20px; 
+      } 
+
+      .site-mark { 
+        display: none; 
+      } 
+
+      .nav-links { 
+        width: 100%; 
+        justify-content: flex-end; 
+        gap: 20px; 
+      } 
+
+      .hero-inner, 
+      .section { 
+        padding-left: 21px; 
+        padding-right: 21px; 
+      } 
+
+      .hero { 
+        min-height: auto; 
+      } 
+
+      .hero-inner { 
+        padding-top: 75px; 
+        padding-bottom: 80px; 
+      } 
+
+      .hero-philosophy { 
+        margin-bottom: 50px; 
+      } 
+
+      .hero-result { 
+        padding-left: 20px; 
+      } 
+
+      .paper { 
+        padding: 24px 22px; 
+      } 
+    } 
+  </style> 
+</head> 
+
+<body> 
+
+  <header> 
+    <nav> 
+      <div class="site-mark">Research</div> 
+
+      <div class="nav-links"> 
+        <a href="/">Home</a> 
+        <a href="/" onclick="event.preventDefault(); document.getElementById('papers').scrollIntoView({behavior:'smooth'});">Papers</a> 
+      </div> 
+    </nav> 
+  </header> 
+
+  <main id="home"> 
+
+    <section class="hero"> 
+      <div class="hero-inner"> 
+
+        <p class="hero-philosophy"> 
+          Exploring why we live in the world, 
+          and what the world ultimately is. 
+        </p> 
+
+        <div class="hero-result"> 
+
+          <h1> 
+            The arrow-of-time problem has been systematically solved. 
+          </h1> 
+
+          <p> 
+            By distinguishing objective temporal orientation 
+            from dynamical-history reversal. 
+          </p> 
+
+          <div class="buttons"> 
+
+            <a 
+              class="button button-primary" 
+              href="https://github.com/dxspacescience/arrow-of-time/releases/download/v1.0/paper.pdf"
+              target="_blank"
+              rel="noopener noreferrer"> 
+              Read the paper 
+            </a> 
+
+            <a 
+              class="button button-secondary" 
+              href="https://github.com/dxspacescience/arrow-of-time"
+              target="_blank"
+              rel="noopener noreferrer"> 
+              View research 
+            </a> 
+
+          </div> 
+
+        </div> 
+      </div> 
+    </section> 
+
+    <section class="section" id="papers"> 
+
+      <h2 class="section-title">Papers</h2> 
+
+      <div class="field"> 
+
+        <div class="field-name">Physics</div> 
+
+        <article class="paper"> 
+
+          <h3> 
+            A Systematic Solution to the Arrow-of-Time Problem 
+          </h3> 
+
+          <div class="paper-meta"> 
+            Version 1 · August 26, 2026
+          </div> 
+
+          <div class="paper-description"> 
+            The arrow-of-time problem is systematically resolved 
+            by distinguishing objective temporal orientation from 
+            dynamical-history reversal and separating their 
+            corresponding explanatory levels. 
+          </div> 
+
+          <div class="paper-links"> 
+
+            <a 
+              href="https://github.com/dxspacescience/arrow-of-time/releases/download/v1.0/paper.pdf"
+              target="_blank"
+              rel="noopener noreferrer"> 
+              PDF 
+            </a> 
+
+            <a 
+              href="https://github.com/dxspacescience/arrow-of-time"
+              target="_blank"
+              rel="noopener noreferrer"> 
+              GitHub Project 
+            </a> 
+
+          </div> 
+
+        </article> 
+
+      </div> 
+
+    </section> 
+
+  </main> 
+
+  <footer> 
+    Research 
+  </footer> 
+
+</body> 
+</html>
