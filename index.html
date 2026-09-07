@@ -153,53 +153,63 @@
     /* 1. Hero */
 
     .hero {
-      background: var(--surface);
-    }
-
-    .hero-inner {
       position: relative;
+      width: min(var(--max), calc(100% - 56px));
+      margin: 0 auto;
+      aspect-ratio: 1672 / 427;
       min-height: 0;
-      aspect-ratio: 1100 / 284;
       overflow: hidden;
-      display: flex;
-      align-items: flex-start;
       background:
         linear-gradient(
           90deg,
           rgba(250, 249, 246, 0.99) 0%,
-          rgba(250, 249, 246, 0.94) 27%,
-          rgba(250, 249, 246, 0.66) 48%,
-          rgba(250, 249, 246, 0.04) 77%
+          rgba(250, 249, 246, 0.94) 20%,
+          rgba(250, 249, 246, 0.58) 42%,
+          rgba(250, 249, 246, 0.08) 70%
         ),
-        var(--hero-image) center 45% / cover no-repeat;
+        url("assets/hero.png") center / 100% 100% no-repeat;
+    }
+
+    .hero .container {
+      width: 100%;
+      margin: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      height: 100%;
+      min-height: 0;
+      display: flex;
+      align-items: center;
     }
 
     .hero-copy {
-      width: min(510px, 52%);
-      padding: 42px 0 0 44px;
+      width: min(780px, 72%);
+      padding: 0 0 0 22px;
     }
 
     .hero h1 {
       margin: 0;
-      color: var(--accent-hover);
-      font-size: clamp(2.1rem, 3.2vw, 2.75rem);
-      line-height: 1.03;
-      letter-spacing: -0.03em;
+      color: var(--dark);
+      font-size: clamp(2.05rem, 3.8vw, 2.85rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
     }
 
-    .hero-line {
+    .hero-title-line {
       display: block;
+      white-space: nowrap;
     }
 
     .hero-motto {
       position: absolute;
-      right: 32px;
-      bottom: 20px;
+      right: 28px;
+      bottom: 18px;
       text-align: right;
       color: rgba(255, 255, 255, 0.96);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 0.78rem;
-      line-height: 1.45;
+      font-size: 1rem;
+      line-height: 1.55;
       font-style: italic;
       text-shadow: 0 1px 12px rgba(0, 0, 0, 0.34);
     }
@@ -402,9 +412,10 @@
     .support-media {
       position: relative;
       min-width: 0;
+      min-height: 320px;
       align-self: stretch;
       display: flex;
-      align-items: center;
+      align-items: stretch;
       background: #eee8dd;
     }
 
@@ -423,7 +434,9 @@
     .support-media img {
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
       margin: 0;
       border: 0;
     }
@@ -510,36 +523,33 @@
       }
 
       .hero {
-        background: var(--surface);
-      }
-
-      .hero-inner {
-        min-height: 360px;
+        width: min(100% - 40px, var(--max));
         aspect-ratio: auto;
-        align-items: flex-start;
+        min-height: 420px;
         background:
           linear-gradient(
             180deg,
             rgba(250, 249, 246, 0.99) 0%,
-            rgba(250, 249, 246, 0.93) 37%,
-            rgba(250, 249, 246, 0.18) 78%
+            rgba(250, 249, 246, 0.93) 34%,
+            rgba(250, 249, 246, 0.2) 76%
           ),
-          var(--hero-image) 64% center / cover no-repeat;
+          url("assets/hero.png") 64% center / cover no-repeat;
+      }
+
+      .hero-inner {
+        min-height: 420px;
+        align-items: flex-start;
       }
 
       .hero-copy {
         width: 100%;
-        padding: 38px 22px 0;
-      }
-
-      .hero h1 {
-        font-size: clamp(1.65rem, 5.6vw, 2.35rem);
+        padding: 38px 18px 0;
       }
 
       .hero-motto {
-        right: 22px;
-        bottom: 22px;
-        font-size: 0.78rem;
+        right: 20px;
+        bottom: 24px;
+        font-size: 0.9rem;
       }
 
       .featured {
@@ -595,15 +605,7 @@
       }
 
       .hero h1 {
-        font-size: clamp(1.42rem, 7vw, 1.85rem);
-      }
-
-      .hero-inner {
-        min-height: 330px;
-      }
-
-      .hero-copy {
-        padding: 32px 18px 0;
+        font-size: clamp(2.05rem, 8.2vw, 3rem);
       }
 
     }
@@ -635,9 +637,9 @@
       <div class="container hero-inner">
         <div class="hero-copy">
           <h1>
-            <span class="hero-line">Exploring why we live</span>
-            <span class="hero-line">in the world, and what</span>
-            <span class="hero-line">the world ultimately is.</span>
+            <span class="hero-title-line">Exploring why we live</span>
+            <span class="hero-title-line">in the world, and what</span>
+            <span class="hero-title-line">the world ultimately is.</span>
           </h1>
         </div>
 
