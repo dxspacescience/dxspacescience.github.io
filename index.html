@@ -44,6 +44,8 @@
       --accent: #264e86;
       --accent-hover: #19365f;
       --max: 1180px;
+      --hero-image: url("assets/hero.png");
+      --support-image: url("assets/support_notebook.png");
     }
 
     * {
@@ -162,7 +164,7 @@
           rgba(250, 249, 246, 0.66) 48%,
           rgba(250, 249, 246, 0.04) 77%
         ),
-        url("assets/hero.png") center right / cover no-repeat;
+        var(--hero-image) center right / cover no-repeat;
     }
 
     .hero-inner {
@@ -208,15 +210,15 @@
     }
 
     .featured-box {
-      max-width: 1030px;
+      max-width: 980px;
       padding: 4px 0 4px 32px;
       border-left: 5px solid var(--accent);
     }
 
     .featured h2 {
-      max-width: 940px;
+      max-width: 880px;
       margin-bottom: 17px;
-      font-size: clamp(2.35rem, 4.9vw, 4.15rem);
+      font-size: clamp(2.2rem, 4.15vw, 3.25rem);
       letter-spacing: -0.03em;
     }
 
@@ -287,13 +289,23 @@
       text-transform: uppercase;
     }
 
+    .paper-banner-frame {
+      width: 100%;
+      aspect-ratio: 890 / 141;
+      margin-bottom: 30px;
+      overflow: hidden;
+      background: #0d2034;
+      line-height: 0;
+    }
+
     .paper-banner {
       display: block;
       width: 100%;
-      height: auto;
-      aspect-ratio: 890 / 150;
+      height: 100%;
       object-fit: cover;
-      margin-bottom: 30px;
+      object-position: center;
+      border: 0;
+      margin: 0;
     }
 
     .paper-body {
@@ -351,34 +363,46 @@
     .support {
       position: relative;
       overflow: hidden;
+      min-height: 300px;
       background: #eee8dd;
     }
 
+    /* The support image is a full section layer rather than a separate column.
+       This avoids a visible seam and makes future image replacement simple. */
+    .support::after {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 47%;
+      background: var(--support-image) center / cover no-repeat;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.35) 12%, #000 34%, #000 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.35) 12%, #000 34%, #000 100%);
+      pointer-events: none;
+    }
+
     .support-inner {
-      min-height: 325px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
-      align-items: stretch;
+      position: relative;
+      z-index: 1;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
     }
 
     .support-copy {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 54px 52px 54px 0;
-      background:
-        linear-gradient(90deg, #eee8dd 0%, #eee8dd 76%, rgba(238, 232, 221, 0.9) 88%, rgba(238, 232, 221, 0) 100%);
+      width: min(610px, 55%);
+      padding: 50px 0;
     }
 
     .support h2 {
       margin-bottom: 17px;
-      font-size: clamp(2rem, 3.5vw, 2.9rem);
+      font-size: clamp(1.95rem, 3vw, 2.45rem);
     }
 
     .support p {
-      max-width: 620px;
+      max-width: 590px;
       margin-bottom: 21px;
       font-size: 1rem;
       line-height: 1.74;
@@ -389,13 +413,6 @@
       color: var(--muted);
       font-size: 0.9rem;
       line-height: 1.65;
-    }
-
-    .support-visual {
-      min-height: 325px;
-      background:
-        linear-gradient(90deg, rgba(238, 232, 221, 0.38), rgba(238, 232, 221, 0) 18%),
-        url("assets/support_notebook.png") center / cover no-repeat;
     }
 
     /* Contact and Footer */
@@ -488,7 +505,7 @@
             rgba(250, 249, 246, 0.93) 37%,
             rgba(250, 249, 246, 0.18) 78%
           ),
-          url("assets/hero.png") 67% center / cover no-repeat;
+          var(--hero-image) 67% center / cover no-repeat;
       }
 
       .hero-inner {
@@ -519,23 +536,32 @@
         padding: 58px 0 64px;
       }
 
-      .paper-banner {
+      .paper-banner-frame {
         aspect-ratio: 16 / 5;
       }
 
+      .support {
+        min-height: 560px;
+      }
+
+      .support::after {
+        top: auto;
+        left: 0;
+        width: 100%;
+        height: 280px;
+        background-position: center;
+        -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 100%);
+        mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 100%);
+      }
+
       .support-inner {
-        display: block;
+        min-height: 560px;
+        align-items: flex-start;
       }
 
       .support-copy {
-        padding: 48px 0 42px;
-        background: transparent;
-      }
-
-      .support-visual {
-        min-height: 285px;
-        margin: 0 -20px;
-        background-position: center;
+        width: 100%;
+        padding: 48px 0 310px;
       }
 
       .contact-grid {
@@ -565,7 +591,7 @@
         font-size: clamp(2.3rem, 11vw, 3.2rem);
       }
 
-      .paper-banner {
+      .paper-banner-frame {
         aspect-ratio: 3 / 1;
       }
     }
@@ -646,10 +672,12 @@
         <h2 class="section-title">Papers</h2>
         <div class="field-name">Physics</div>
 
-        <img
-          class="paper-banner"
-          src="assets/paper_banner.png"
-          alt="A wide scientific image accompanying the arrow of time research">
+        <div class="paper-banner-frame">
+          <img
+            class="paper-banner"
+            src="assets/paper_banner.png"
+            alt="A wide scientific image accompanying the arrow of time research">
+        </div>
 
         <article class="paper-body">
           <h3 class="paper-title">A Systematic Solution to the Arrow of Time Problem</h3>
@@ -711,12 +739,6 @@
             One time and monthly support is available through Ko fi.<br>
             Reading, sharing, and citing the research are also meaningful ways to help.
           </div>
-        </div>
-
-        <div
-          class="support-visual"
-          role="img"
-          aria-label="An open research notebook with a handwritten message about giving ideas time">
         </div>
       </div>
     </section>
