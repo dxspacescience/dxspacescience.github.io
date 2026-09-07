@@ -43,7 +43,7 @@
       --line: #d8d9dc;
       --accent: #264e86;
       --accent-hover: #19365f;
-      --max: 1180px;
+      --max: 1100px;
       --hero-image: url("assets/hero.png");
       --support-image: url("assets/support_notebook.png");
     }
@@ -153,9 +153,15 @@
     /* 1. Hero */
 
     .hero {
+      background: var(--surface);
+    }
+
+    .hero-inner {
       position: relative;
       min-height: 470px;
       overflow: hidden;
+      display: flex;
+      align-items: center;
       background:
         linear-gradient(
           90deg,
@@ -167,28 +173,21 @@
         var(--hero-image) center right / cover no-repeat;
     }
 
-    .hero-inner {
-      position: relative;
-      min-height: 470px;
-      display: flex;
-      align-items: center;
-    }
-
     .hero-copy {
-      width: min(720px, 64%);
+      width: min(690px, 64%);
       padding: 72px 0 96px;
     }
 
     .hero h1 {
       margin: 0;
-      font-size: clamp(2.55rem, 5.4vw, 4.9rem);
+      font-size: clamp(2.55rem, 5vw, 4.45rem);
       letter-spacing: -0.035em;
     }
 
     .hero-motto {
       position: absolute;
-      right: 0;
-      bottom: 46px;
+      right: 32px;
+      bottom: 42px;
       text-align: right;
       color: rgba(255, 255, 255, 0.96);
       font-family: Georgia, "Times New Roman", serif;
@@ -291,7 +290,6 @@
 
     .paper-banner-frame {
       width: 100%;
-      aspect-ratio: 890 / 141;
       margin-bottom: 30px;
       overflow: hidden;
       background: #0d2034;
@@ -301,9 +299,7 @@
     .paper-banner {
       display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
+      height: auto;
       border: 0;
       margin: 0;
     }
@@ -361,48 +357,29 @@
     /* 4. Support */
 
     .support {
-      position: relative;
-      overflow: hidden;
-      min-height: 300px;
-      background: #eee8dd;
-    }
-
-    /* The support image is a full section layer rather than a separate column.
-       This avoids a visible seam and makes future image replacement simple. */
-    .support::after {
-      content: "";
-      position: absolute;
-      z-index: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 47%;
-      background: var(--support-image) center / cover no-repeat;
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.35) 12%, #000 34%, #000 100%);
-      mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.35) 12%, #000 34%, #000 100%);
-      pointer-events: none;
+      padding: 0 0 0;
+      background: var(--bg);
     }
 
     .support-inner {
-      position: relative;
-      z-index: 1;
-      min-height: 300px;
-      display: flex;
+      display: grid;
+      grid-template-columns: 52% 48%;
       align-items: center;
+      overflow: hidden;
+      background: #eee8dd;
     }
 
     .support-copy {
-      width: min(610px, 55%);
-      padding: 50px 0;
+      padding: 46px 42px 46px 0;
     }
 
     .support h2 {
       margin-bottom: 17px;
-      font-size: clamp(1.95rem, 3vw, 2.45rem);
+      font-size: clamp(1.95rem, 3vw, 2.35rem);
     }
 
     .support p {
-      max-width: 590px;
+      max-width: 560px;
       margin-bottom: 21px;
       font-size: 1rem;
       line-height: 1.74;
@@ -413,6 +390,35 @@
       color: var(--muted);
       font-size: 0.9rem;
       line-height: 1.65;
+    }
+
+    .support-media {
+      position: relative;
+      min-width: 0;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      background: #eee8dd;
+    }
+
+    .support-media::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 17%;
+      pointer-events: none;
+      background: linear-gradient(90deg, #eee8dd 0%, rgba(238, 232, 221, 0) 100%);
+    }
+
+    .support-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      border: 0;
     }
 
     /* Contact and Footer */
@@ -497,7 +503,12 @@
       }
 
       .hero {
+        background: var(--surface);
+      }
+
+      .hero-inner {
         min-height: 540px;
+        align-items: flex-start;
         background:
           linear-gradient(
             180deg,
@@ -508,18 +519,13 @@
           var(--hero-image) 67% center / cover no-repeat;
       }
 
-      .hero-inner {
-        min-height: 540px;
-        align-items: flex-start;
-      }
-
       .hero-copy {
         width: 100%;
         padding: 64px 0 0;
       }
 
       .hero-motto {
-        right: 0;
+        right: 22px;
         bottom: 30px;
         font-size: 0.9rem;
       }
@@ -536,32 +542,21 @@
         padding: 58px 0 64px;
       }
 
-      .paper-banner-frame {
-        aspect-ratio: 16 / 5;
-      }
-
-      .support {
-        min-height: 560px;
-      }
-
-      .support::after {
-        top: auto;
-        left: 0;
-        width: 100%;
-        height: 280px;
-        background-position: center;
-        -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 100%);
-        mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 100%);
-      }
-
       .support-inner {
-        min-height: 560px;
-        align-items: flex-start;
+        grid-template-columns: 1fr;
       }
 
       .support-copy {
+        padding: 42px 0 36px;
+      }
+
+      .support-media::before {
+        top: 0;
+        right: 0;
+        bottom: auto;
         width: 100%;
-        padding: 48px 0 310px;
+        height: 15%;
+        background: linear-gradient(180deg, #eee8dd 0%, rgba(238, 232, 221, 0) 100%);
       }
 
       .contact-grid {
@@ -591,9 +586,6 @@
         font-size: clamp(2.3rem, 11vw, 3.2rem);
       }
 
-      .paper-banner-frame {
-        aspect-ratio: 3 / 1;
-      }
     }
   </style>
 </head>
@@ -739,6 +731,10 @@
             One time and monthly support is available through Ko fi.<br>
             Reading, sharing, and citing the research are also meaningful ways to help.
           </div>
+        </div>
+
+        <div class="support-media" aria-hidden="true">
+          <img src="assets/support_notebook.png" alt="">
         </div>
       </div>
     </section>
