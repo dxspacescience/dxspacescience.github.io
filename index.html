@@ -154,19 +154,25 @@
 
     .hero {
       position: relative;
-      width: 100%;
-      aspect-ratio: 388 / 99;
+      width: min(var(--max), calc(100% - 56px));
+      margin: 0 auto;
+      aspect-ratio: 1100 / 480;
       min-height: 0;
       overflow: hidden;
       background:
         linear-gradient(
           90deg,
           rgba(250, 249, 246, 0.99) 0%,
-          rgba(250, 249, 246, 0.94) 24%,
-          rgba(250, 249, 246, 0.62) 46%,
-          rgba(250, 249, 246, 0.03) 76%
+          rgba(250, 249, 246, 0.94) 20%,
+          rgba(250, 249, 246, 0.58) 42%,
+          rgba(250, 249, 246, 0.08) 70%
         ),
         url("assets/hero.png") center / cover no-repeat;
+    }
+
+    .hero .container {
+      width: 100%;
+      margin: 0;
     }
 
     .hero-inner {
@@ -178,22 +184,22 @@
     }
 
     .hero-copy {
-      width: min(560px, 52%);
-      padding: 0;
+      width: min(660px, 58%);
+      padding: 0 0 0 22px;
     }
 
     .hero h1 {
       margin: 0;
       color: var(--dark);
-      font-size: clamp(2.2rem, 3.65vw, 3.55rem);
-      line-height: 1.08;
-      letter-spacing: -0.032em;
+      font-size: clamp(2.6rem, 4.55vw, 4.55rem);
+      line-height: 1.03;
+      letter-spacing: -0.04em;
     }
 
     .hero-motto {
       position: absolute;
-      right: 0;
-      bottom: 26px;
+      right: 36px;
+      bottom: 24px;
       text-align: right;
       color: rgba(255, 255, 255, 0.96);
       font-family: Georgia, "Times New Roman", serif;
@@ -401,9 +407,10 @@
     .support-media {
       position: relative;
       min-width: 0;
+      min-height: 320px;
       align-self: stretch;
       display: flex;
-      align-items: center;
+      align-items: stretch;
       background: #eee8dd;
     }
 
@@ -422,7 +429,9 @@
     .support-media img {
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
       margin: 0;
       border: 0;
     }
@@ -509,31 +518,32 @@
       }
 
       .hero {
+        width: min(100% - 40px, var(--max));
         aspect-ratio: auto;
-        min-height: 440px;
+        min-height: 420px;
         background:
           linear-gradient(
             180deg,
             rgba(250, 249, 246, 0.99) 0%,
-            rgba(250, 249, 246, 0.93) 37%,
-            rgba(250, 249, 246, 0.18) 78%
+            rgba(250, 249, 246, 0.93) 34%,
+            rgba(250, 249, 246, 0.2) 76%
           ),
-          url("assets/hero.png") 67% center / cover no-repeat;
+          url("assets/hero.png") 64% center / cover no-repeat;
       }
 
       .hero-inner {
-        min-height: 440px;
+        min-height: 420px;
         align-items: flex-start;
       }
 
       .hero-copy {
         width: 100%;
-        padding: 56px 0 0;
+        padding: 38px 18px 0;
       }
 
       .hero-motto {
-        right: 0;
-        bottom: 30px;
+        right: 20px;
+        bottom: 24px;
         font-size: 0.9rem;
       }
 
@@ -590,7 +600,7 @@
       }
 
       .hero h1 {
-        font-size: clamp(2.05rem, 9.5vw, 2.85rem);
+        font-size: clamp(2.05rem, 8.2vw, 3rem);
       }
 
     }
