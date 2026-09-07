@@ -153,15 +153,9 @@
     /* 1. Hero */
 
     .hero {
-      background: var(--surface);
-    }
-
-    .hero-inner {
       position: relative;
       min-height: 470px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
       background:
         linear-gradient(
           90deg,
@@ -170,24 +164,31 @@
           rgba(250, 249, 246, 0.66) 48%,
           rgba(250, 249, 246, 0.04) 77%
         ),
-        var(--hero-image) center right / cover no-repeat;
+        url("assets/hero.png") center right / cover no-repeat;
+    }
+
+    .hero-inner {
+      position: relative;
+      min-height: 470px;
+      display: flex;
+      align-items: center;
     }
 
     .hero-copy {
-      width: min(690px, 64%);
+      width: min(720px, 64%);
       padding: 72px 0 96px;
     }
 
     .hero h1 {
       margin: 0;
-      font-size: clamp(2.55rem, 5vw, 4.45rem);
+      font-size: clamp(2.55rem, 5.4vw, 4.9rem);
       letter-spacing: -0.035em;
     }
 
     .hero-motto {
       position: absolute;
-      right: 32px;
-      bottom: 42px;
+      right: 0;
+      bottom: 46px;
       text-align: right;
       color: rgba(255, 255, 255, 0.96);
       font-family: Georgia, "Times New Roman", serif;
@@ -503,12 +504,7 @@
       }
 
       .hero {
-        background: var(--surface);
-      }
-
-      .hero-inner {
         min-height: 540px;
-        align-items: flex-start;
         background:
           linear-gradient(
             180deg,
@@ -516,7 +512,12 @@
             rgba(250, 249, 246, 0.93) 37%,
             rgba(250, 249, 246, 0.18) 78%
           ),
-          var(--hero-image) 67% center / cover no-repeat;
+          url("assets/hero.png") 67% center / cover no-repeat;
+      }
+
+      .hero-inner {
+        min-height: 540px;
+        align-items: flex-start;
       }
 
       .hero-copy {
@@ -525,7 +526,7 @@
       }
 
       .hero-motto {
-        right: 22px;
+        right: 0;
         bottom: 30px;
         font-size: 0.9rem;
       }
